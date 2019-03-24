@@ -1,40 +1,57 @@
-{% with messages = get_flashed_messages()%}
-{% if messages%}
-{% for message in messages%}
-<p>{{message}}</p>
-{% endfor %}
-{% endif %}
-{% endwith %}
+{% extends 'layout.html' %}
 
-<form action="/add_contact" method="POST">
-  <input type="text" name="fullname" placeholder="fullname">
-  <input type="text" name="phone" placeholder="phone">
-  <input type="text" name="email" placeholder="email">
-  <button type="submit">
-    Guardar
-  </button>
-</form>
+{% block body%}
+<div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <td>fullname</td>
-      <td>phone</td>
-      <td>email</td>
-      <td>Operacion</td>
-    </tr>
-  </thead>
-  <tbody>
-    {% for contact in contacts %}
-    <tr>
-      <td>{{contact.1}}</td>
-      <td>{{contact.2}}</td>
-      <td>{{contact.3}}</td>
-      <td>
-        <a href="/edit/{{contact.0}}">Editar</a>
-        <a href="/delete/{{contact.0}}">Eliminar</a>
-      </td>
-    </tr>
-    {% endfor %} 
-  </tbody>
-</table>
+  {% with messages = get_flashed_messages()%}
+  {% if messages%}
+  {% for message in messages%}
+  <div class="col s12">
+    <p class="waves-effect waves-light btn">{{message}}</p>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <div class="col s6">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text">
+        <span class="card-title">Agregar Contacto</span>
+        <form action="/add_contact" method="POST">
+          <input type="text" name="fullname" placeholder="fullname">
+          <input type="text" name="phone" placeholder="phone">
+          <input type="text" name="email" placeholder="email">
+          <button class="waves-effect waves-light btn" type="submit">
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col s6">
+    <table>
+      <thead>
+        <tr>
+          <td class="center-align">fullname</td>
+          <td class="center-align">phone</td>
+          <td class="center-align">email</td>
+          <td class="center-align">Operacion</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in contacts %}
+        <tr>
+          <td class="center-align">{{contact.1}}</td>
+          <td class="center-align">{{contact.2}}</td>
+          <td class="center-align">{{contact.3}}</td>
+          <td>
+            <a href="/edit/{{contact.0}}" class="btn-floating pulse"><i class="material-icons">create</i></a>
+            <a href="/delete/{{contact.0}}" class="btn-floating pulse"><i class="material-icons">delete</i></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
