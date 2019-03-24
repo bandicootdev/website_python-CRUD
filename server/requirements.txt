@@ -1,0 +1,6 @@
+flask
+flask-mysqldb
+simplejson
+Werkzeug
+ItsDangerous
+Watchdog
