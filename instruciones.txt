@@ -1,5 +1,6 @@
 1.-crea la base de datos
-2.-crea un virtualenv "virtualenv env --python=python3"
-3.-navega hasta la carpeta "serve"
+2.-navega hasta la carpeta "serve"
+3.-crea un virtualenv "virtualenv env --python=python3"
 4.-activar el virtualenv "source env/bin/activate"
-5.-correr el archivo de inicio de server "python run.py"
+5.-instalar las librerias usadas "pip install -r requirements.txt"
+6.-correr el archivo de inicio de server "python run.py"
